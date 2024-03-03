@@ -1,0 +1,102 @@
+import java.util.*;
+ 
+class Usuario {
+  private String nombre;
+  private String apellidos;
+  private String correo;
+   private String numeroTelefonico;
+ 
+   // Constructor
+   public Usuario(String nombre, String apellidos, String correo, String numeroTelefonico) {
+       this.nombre = nombre;
+       this.apellidos = apellidos;
+       this.correo = correo;
+       this.numeroTelefonico = numeroTelefonico;
+   }
+ 
+   // Getters
+  public String getNombre() {
+      return nombre;
+   }
+ 
+  public String getApellidos() {
+      return apellidos;
+   }
+ 
+  public String getCorreo() {
+      return correo;
+   }
+ 
+  public String getNumeroTelefonico() {
+      return numeroTelefonico;
+   }
+}
+ 
+class Producto {
+  private String nombre;
+  private double precio;
+   // Otros atributos como descripción, número de serie, etc., pueden agregarse según sea necesario.
+ 
+   // Constructor
+   public Producto(String nombre, double precio) {
+       this.nombre = nombre;
+       this.precio = precio;
+   }
+ 
+   // Getters
+  public String getNombre() {
+      return nombre;
+   }
+ 
+  public double getPrecio() {
+      return precio;
+   }
+}
+ 
+public class SitioVentasComponentes {
+   private List<Usuario> usuarios;
+   private List<Producto> productos;
+ 
+   // Constructor
+   public SitioVentasComponentes() {
+       this.usuarios = new ArrayList<>();
+       this.productos = new ArrayList<>();
+   }
+ 
+   // Método para registrar un usuario
+   public void registrarUsuario(String nombre, String apellidos, String correo, String numeroTelefonico) {
+       Usuario usuario = new Usuario(nombre, apellidos, correo, numeroTelefonico);
+       usuarios.add(usuario);
+       System.out.println("Usuario registrado exitosamente.");
+   }
+ 
+   // Método para agregar un producto al inventario
+   public void agregarProducto(String nombre, double precio) {
+       Producto producto = new Producto(nombre, precio);
+       productos.add(producto);
+       System.out.println("Producto agregado al inventario.");
+   }
+ 
+   // Método para mostrar la lista de productos disponibles
+   public void mostrarProductos() {
+       System.out.println("Lista de productos disponibles:");
+       for (Producto producto : productos) {
+           System.out.println("Nombre: " + producto.getNombre() + ", Precio: $" + producto.getPrecio());
+       }
+   }
+ 
+  public static void main(String[] args) {
+       SitioVentasComponentes sitio = new SitioVentasComponentes();
+ 
+       // Ejemplo de registro de usuario
+      sitio.registrarUsuario("Juan", "Perez", "juan@example.com", "1234567890");
+ 
+       // Ejemplo de agregado de productos
+      sitio.agregarProducto("Resistor", 1.99);
+      sitio.agregarProducto("Transistor", 2.99);
+      sitio.agregarProducto("Capacitor", 0.99);
+ 
+       // Mostrar lista de productos
+       sitio.mostrarProductos();
+   }
+}
